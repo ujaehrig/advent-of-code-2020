@@ -2,6 +2,8 @@ package de.jaehrig;
 
 import de.jaehrig.common.Puzzle;
 import de.jaehrig.day1.Day1;
+import de.jaehrig.day2.Day2;
+import de.jaehrig.day2.Day2Part2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,6 +35,8 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         app.showResult(1, new Day1(), "/day1/input.txt");
-        app.showResult(2, new Day2(), "/day1/input.txt");
+        // app.showResult(1, new Day1Part2(), "/day1/input.txt");
+        app.showResult(2, new Day2(), "/day2/input.txt");
+        app.showResult(2, new Day2Part2(), "/day2/input.txt");
     }
 }
