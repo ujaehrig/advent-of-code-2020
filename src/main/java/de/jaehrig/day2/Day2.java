@@ -6,16 +6,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-public class Day2 implements Puzzle<String> {
+public class Day2 implements Puzzle<Long> {
 
     // "1-3 a: abcde"
     private static final Pattern PARSER = Pattern
             .compile("(?<min>[0-9]+)-(?<max>[0-9]+) (?<char>[a-z]): (?<password>.*)");
 
     @Override
-    public String solve(final Stream<String> input) {
-        long count = input.map(Test::parse).filter(this::isValid).count();
-        return String.valueOf(count);
+    public Long solve(final Stream<String> input) {
+        return input.map(Test::parse).filter(this::isValid).count();
     }
 
     static class Test {

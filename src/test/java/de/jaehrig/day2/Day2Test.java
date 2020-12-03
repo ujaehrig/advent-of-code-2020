@@ -19,10 +19,10 @@ class Day2Test {
         );
 
         // when
-        String solution = classUnderTest.solve(input);
+        Long solution = classUnderTest.solve(input);
 
         // then
-        assertThat(solution).isEqualTo("2");
+        assertThat(solution).isEqualTo(2L);
     }
 
 }

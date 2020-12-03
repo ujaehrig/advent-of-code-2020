@@ -7,13 +7,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day1 implements Puzzle<String> {
+public class Day1 implements Puzzle<Integer> {
 
     @Override
-    public String solve(final Stream<String> input) {
+    public Integer solve(final Stream<String> input) {
         Set<Integer> ints = input.map(Integer::parseInt).collect(Collectors.toSet());
         Pair<Integer> pair = findPair(ints, 2020).orElseThrow();
-        return String.valueOf(pair.first * pair.second);
+        return pair.first * pair.second;
     }
 
     protected Optional<Pair<Integer>> findPair(Set<Integer> set, int expectedSum) {

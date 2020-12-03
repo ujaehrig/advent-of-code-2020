@@ -19,5 +19,4 @@ class Day1Part2Test {
         // then
         assertThat(solution).isEqualTo(241861950L);
     }
-
 }
