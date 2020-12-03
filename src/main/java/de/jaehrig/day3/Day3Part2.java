@@ -11,13 +11,10 @@ public class Day3Part2 implements Puzzle<Long> {
     public Long solve(final Stream<String> input) {
         List<String> map = input.collect(Collectors.toList());
 
-        long result = new Day3(1, 1).solve(map.stream()) *
-                new Day3(3, 1).solve(map.stream()) *
-                new Day3(5, 1).solve(map.stream()) *
-                new Day3(7, 1).solve(map.stream()) *
-                new Day3(1, 2).solve(map.stream()) ;
-
-        return result;
-
+        return new Day3(1, 1).solve(map.stream())
+                * new Day3(3, 1).solve(map.stream())
+                * new Day3(5, 1).solve(map.stream())
+                * new Day3(7, 1).solve(map.stream())
+                * new Day3(1, 2).solve(map.stream());
     }
 }

@@ -1,6 +1,7 @@
 package de.jaehrig;
 
 import de.jaehrig.common.Puzzle;
+import de.jaehrig.common.PuzzleException;
 import de.jaehrig.day1.Day1;
 import de.jaehrig.day2.Day2;
 import de.jaehrig.day2.Day2Part2;
@@ -21,16 +22,24 @@ public class App {
         URL resource = App.class.getResource(resourceName);
 
         try {
+            @SuppressWarnings("java:S2095")
             BufferedReader rdr = new BufferedReader(new InputStreamReader(resource.openStream()));
-            return rdr.lines();
+            return rdr.lines().onClose(() -> {
+                try {
+                    rdr.close();
+                } catch (IOException exc) {
+                    throw new PuzzleException("Error during close", exc);
+                }
+            });
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new PuzzleException(e);
         }
     }
 
-    private void showResult(int day, Puzzle puzzle, String resource) {
-        Stream<String> input = getResource(resource);
-        System.out.printf("day%d: %s%n", day, puzzle.solve(input));
+    private void showResult(int day, Puzzle<?> puzzle, String resource) {
+        try (Stream<String> input = getResource(resource)) {
+            System.out.printf("day%d: %s%n", day, puzzle.solve(input));
+        }
     }
 
     public static void main(String[] args) {

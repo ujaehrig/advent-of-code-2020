@@ -1,6 +1,7 @@
 package de.jaehrig.day2;
 
 import de.jaehrig.common.Puzzle;
+import de.jaehrig.common.PuzzleException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -33,11 +34,14 @@ public class Day2 implements Puzzle<String> {
 
         static Test parse(String s) {
             Matcher matcher = PARSER.matcher(s);
-            matcher.matches();
-            int min = Integer.parseInt(matcher.group("min"));
-            int max = Integer.parseInt(matcher.group("max"));
-            char aChar = matcher.group("char").charAt(0);
-            return new Test(min, max, aChar, matcher.group("password"));
+            if (matcher.matches()) {
+                int min = Integer.parseInt(matcher.group("min"));
+                int max = Integer.parseInt(matcher.group("max"));
+                char aChar = matcher.group("char").charAt(0);
+                return new Test(min, max, aChar, matcher.group("password"));
+            } else {
+                throw new PuzzleException("Parser failed");
+            }
         }
     }
 
