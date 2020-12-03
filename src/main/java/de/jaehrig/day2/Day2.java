@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-public class Day2 implements Puzzle {
+public class Day2 implements Puzzle<String> {
 
     // "1-3 a: abcde"
     private static final Pattern PARSER = Pattern

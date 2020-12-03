@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day1 implements Puzzle {
+public class Day1 implements Puzzle<String> {
 
     @Override
     public String solve(final Stream<String> input) {

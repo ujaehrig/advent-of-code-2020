@@ -5,9 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
-class Day3Test {
-
-    private Day3 classUnderTest = new Day3();
+class Day3Part2Test {
+    private Day3Part2 classUnderTest = new Day3Part2();
 
     @Test
     void testExampleInput() {
@@ -29,6 +28,7 @@ class Day3Test {
         long solution = classUnderTest.solve(input);
 
         // then
-        assertThat(solution).isEqualTo(7L);
+        assertThat(solution).isEqualTo(336L);
     }
+
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day3 implements Puzzle {
+public class Day3 implements Puzzle<Long> {
 
     private final int right;
     private final int down;
@@ -20,19 +20,17 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public String solve(final Stream<String> input) {
+    public Long solve(final Stream<String> input) {
         List<String> map = input.collect(Collectors.toList());
         int width = map.get(0).length();
 
-        int treesHit = 0;
+        long treesHit = 0;
         for(int x = 0, y = 0; y < map.size(); x = (x + right) % width, y += down) {
             if (map.get(y).charAt(x) == '#') {
                 treesHit++;
             }
         }
 
-        return String.valueOf(treesHit);
-
-
+        return treesHit;
     }
 }

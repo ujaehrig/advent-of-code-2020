@@ -5,6 +5,7 @@ import de.jaehrig.day1.Day1;
 import de.jaehrig.day2.Day2;
 import de.jaehrig.day2.Day2Part2;
 import de.jaehrig.day3.Day3;
+import de.jaehrig.day3.Day3Part2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,5 +42,6 @@ public class App {
         app.showResult(2, new Day2Part2(), "/day2/input.txt");
 
         app.showResult(3, new Day3(), "/day3/input.txt");
+        app.showResult(3, new Day3Part2(), "/day3/input.txt");
     }
 }
