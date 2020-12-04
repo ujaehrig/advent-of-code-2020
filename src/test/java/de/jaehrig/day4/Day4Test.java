@@ -16,7 +16,7 @@ class Day4Test {
         try(Stream<String> input = Tools.getResource("/day4.txt")) {
 
             // when
-            Integer solution = classUnderTest.solve(input);
+            Long solution = classUnderTest.solve(input);
 
             // then
             assertThat(solution).isEqualTo(2);
