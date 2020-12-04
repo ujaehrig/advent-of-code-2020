@@ -4,11 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExtendedPassportValidator extends SimplePassportValidator {
-    @SuppressWarnings("java:S115")
-    enum EyeColor {
-        amb, blu, brn, gry, grn, hzl, oth
-    }
 
+    private static final Pattern EYE_COLOR_PATTERN = Pattern.compile("amb|blu|brn|gry|grn|hzl|oth");
     private static final Pattern HAIR_COLOR_PATTERN = Pattern.compile("#[0-9a-f]{6}");
     private static final Pattern PASSPORT_ID_PATTERN = Pattern.compile("[0-9]{9}");
     private static final Pattern HEIGHT_PATTERN = Pattern.compile("(?<height>[0-9]+)(?<x>cm|in)");
@@ -30,12 +27,7 @@ public class ExtendedPassportValidator extends SimplePassportValidator {
     }
 
     private boolean validEyeColor(final String eyeColor) {
-        try {
-            EyeColor.valueOf(eyeColor);
-            return true;
-        } catch(IllegalArgumentException exc) {
-            return false;
-        }
+        return EYE_COLOR_PATTERN.matcher(eyeColor).matches();
     }
 
     private boolean validHairColor(final String hairColor) {
