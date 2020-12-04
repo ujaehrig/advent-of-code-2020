@@ -8,8 +8,7 @@ class Passport {
     private final String height;
     private final String hairColor;
     private final String eyeColor;
-    private final String passwordId;
-    @SuppressWarnings("java:S1068")
+    private final String passportId;
     private final String country;
 
     public Passport(PassportBuilder builder) {
@@ -19,18 +18,40 @@ class Passport {
         height = builder.height;
         hairColor = builder.hairColor;
         eyeColor = builder.eyeColor;
-        passwordId = builder.passwordId;
+        passportId = builder.passwordId;
         country = builder.country;
     }
 
-    public boolean isValid() {
-        return yearOfBirth != null
-                && yearOfIssue != null
-                && yearOfExpiration != null
-                && height != null
-                && hairColor != null
-                && eyeColor != null
-                && passwordId != null;
+    public Integer getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public Integer getYearOfIssue() {
+        return yearOfIssue;
+    }
+
+    public Integer getYearOfExpiration() {
+        return yearOfExpiration;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getHairColor() {
+        return hairColor;
+    }
+
+    public String getEyeColor() {
+        return eyeColor;
+    }
+
+    public String getPassportId() {
+        return passportId;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     static PassportBuilder builder() {

@@ -8,10 +8,20 @@ import java.util.stream.Stream;
 
 public class Day4 implements Puzzle<Long> {
 
+    private final PassportValidator validator;
+
+    public Day4() {
+        this(new SimplePassportValidator());
+    }
+
+    protected Day4(PassportValidator validator) {
+        this.validator = validator;
+    }
+
     @Override
     public Long solve(final Stream<String> input) {
         List<Passport> passports = parse(input);
-        return passports.stream().filter(Passport::isValid).count();
+        return passports.stream().filter(validator::isValid).count();
     }
 
     private List<Passport> parse(final Stream<String> input) {
