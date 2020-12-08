@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Tools {
@@ -12,7 +14,13 @@ public final class Tools {
         // fo not instantiate
     }
 
-    public static Stream<String> getResource(String resourceName) {
+    public static List<String> getResourceAsList(String resourceName) {
+        try(Stream<String> stream = getResourceAsStream(resourceName)) {
+            return stream.collect(Collectors.toList());
+        }
+    }
+
+    public static Stream<String> getResourceAsStream(String resourceName) {
         URL resource = Tools.class.getResource(resourceName);
 
         try {

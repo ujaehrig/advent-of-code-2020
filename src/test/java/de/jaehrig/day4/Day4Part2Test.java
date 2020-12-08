@@ -13,7 +13,7 @@ class Day4Part2Test {
     @Test
     void testExampleInput() {
         // given
-        try(Stream<String> input = Tools.getResource("/day4part2.txt")) {
+        try(Stream<String> input = Tools.getResourceAsStream("/day4part2.txt")) {
 
             // when
             Long solution = classUnderTest.solve(input);

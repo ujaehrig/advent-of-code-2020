@@ -10,6 +10,11 @@ import de.jaehrig.day3.Day3;
 import de.jaehrig.day3.Day3Part2;
 import de.jaehrig.day4.Day4;
 import de.jaehrig.day4.Day4Part2;
+import de.jaehrig.day5.Day5;
+import de.jaehrig.day5.Day5Part2;
+import de.jaehrig.day7.Day7;
+import de.jaehrig.day8.Day8;
+import de.jaehrig.day8.Day8Part2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,9 +45,13 @@ public class App {
     }
 
     private void showResult(int day, Puzzle<?> puzzle, String resource) {
+        long start = System.currentTimeMillis();
         try (Stream<String> input = getResource(resource)) {
-            System.out.printf("day%d: %s%n", day, puzzle.solve(input));
+            Object solution = puzzle.solve(input);
+            long end = System.currentTimeMillis();
+            System.out.printf("day%d: %s (%dms)%n", day, solution, (end-start));
         }
+
     }
 
     public static void main(String[] args) {
@@ -58,5 +67,13 @@ public class App {
 
         app.showResult(4, new Day4(), "/day4/input.txt");
         app.showResult(4, new Day4Part2(), "/day4/input.txt");
+
+        app.showResult(5, new Day5(), "/day5/input.txt");
+        app.showResult(5, new Day5Part2(), "/day5/input.txt");
+
+        app.showResult(7, new Day7(), "/day7/input.txt");
+
+        app.showResult(8, new Day8(), "/day8/input.txt");
+        app.showResult(8, new Day8Part2(), "/day8/input.txt");
     }
 }

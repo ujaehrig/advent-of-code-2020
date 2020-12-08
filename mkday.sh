@@ -6,12 +6,14 @@ if [ $# -ne 1 ] ; then
 fi
 
 DAY="$1"
+test -f ".session.txt" && SESSION=$(cat ".session.txt")
 
 test -d "src/main/java/de/jaehrig/day${DAY}" || mkdir "src/main/java/de/jaehrig/day${DAY}"
 test -d "src/test/java/de/jaehrig/day${DAY}" || mkdir "src/test/java/de/jaehrig/day${DAY}"
 test -d "src/main/resources/day${DAY}" || mkdir "src/main/resources/day${DAY}"
 
-touch "src/main/resources/day${DAY}/input.txt"
+test -f "src/main/resources/day${DAY}/input.txt" ||
+curl -H "Cookie: session=${SESSION}" "https://adventofcode.com/2020/day/${DAY}/input" > "src/main/resources/day${DAY}/input.txt"
 
 test -f "src/test/java/de/jaehrig/day${DAY}/Day${DAY}Test.java" ||
 cat > "src/test/java/de/jaehrig/day${DAY}/Day${DAY}Test.java" <<EOF
@@ -32,7 +34,7 @@ class Day${DAY}Test {
         Stream<String> input = Stream.of();
 
         // when
-        String solution = classUnderTest.solve(input);
+        Number solution = classUnderTest.solve(input);
 
         // then
         assertThat(solution).isEqualTo("");
@@ -48,10 +50,10 @@ package de.jaehrig.day${DAY};
 import de.jaehrig.common.Puzzle;
 import java.util.stream.Stream;
 
-public class Day${DAY} implements Puzzle {
+public class Day${DAY} implements Puzzle<Number> {
 
     @Override
-    public String solve(final Stream<String> input) {
+    public Number solve(final Stream<String> input) {
         return null;
     }
 }
